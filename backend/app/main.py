@@ -1,3 +1,10 @@
+# Use system trust store (picks up corporate CA certs on Windows/macOS)
+try:
+    import truststore
+    truststore.inject_into_ssl()
+except ImportError:
+    pass
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -13,7 +20,7 @@ app = FastAPI(
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins,
+    allow_origins=["*"],  # Allow all origins for local dev (file:// and localhost)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
