@@ -1,0 +1,47 @@
+# Training Configuration
+# Adjust these parameters based on your dataset size and quality goals
+
+# Base model to fine-tune
+base_model: "meta-llama/Llama-Vision-Free"
+
+# Training parameters
+training:
+  # Number of training epochs
+  epochs: 3
+  # Learning rate
+  learning_rate: 1.0e-5
+  # Batch size
+  batch_size: 4
+  # Warmup ratio (fraction of total steps)
+  warmup_ratio: 0.1
+  # LoRA rank (higher = more capacity but slower)
+  lora_rank: 16
+  # LoRA alpha
+  lora_alpha: 32
+  # LoRA dropout
+  lora_dropout: 0.05
+
+# Dataset paths
+data:
+  train_file: "data/train.jsonl"
+  val_file: "data/val.jsonl"
+  images_dir: "data/images"
+
+# Provider settings
+provider: "together"  # "together" or "local"
+
+# Together AI specific
+together:
+  # Model suffix for the fine-tuned version
+  model_suffix: "interior-design-v1"
+  # Whether to use wandb for tracking
+  wandb_tracking: false
+
+# Evaluation
+evaluation:
+  # Number of examples to evaluate on
+  num_examples: 50
+  # Temperature for generation during eval
+  temperature: 0.7
+  # Max tokens for generation
+  max_tokens: 512
