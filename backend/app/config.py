@@ -26,7 +26,7 @@ class Settings(BaseSettings):
 
     # Model Configuration
     model_provider: str = "anthropic"  # "anthropic", "gemini", "together", "openai", or "local"
-    model_name: str = "claude-sonnet-4-20250514"  # Default model
+    model_name: str = "claude-haiku-4-5"  # Default model
 
     # Fine-tuned models (set after training on Together AI)
     pinterest_model: Optional[str] = None
