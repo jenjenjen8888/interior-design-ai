@@ -1,0 +1,7 @@
+{
+  "total_examples": 132,
+  "train_examples": 118,
+  "val_examples": 14,
+  "image_max_dim": 1024,
+  "source_dir": "pinterest"
+}
