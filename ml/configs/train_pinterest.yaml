@@ -1,0 +1,29 @@
+# Training Configuration - Pinterest Model
+# Trained on Pinterest interior design photos (aspirational, curated aesthetics)
+
+base_model: "meta-llama/Llama-Vision-Free"
+
+training:
+  epochs: 3
+  learning_rate: 1.0e-5
+  batch_size: 4
+  warmup_ratio: 0.1
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+
+data:
+  train_file: "data/pinterest/train.jsonl"
+  val_file: "data/pinterest/val.jsonl"
+  images_dir: "data/pinterest/images"
+
+provider: "together"
+
+together:
+  model_suffix: "interior-design-pinterest-v1"
+  wandb_tracking: false
+
+evaluation:
+  num_examples: 50
+  temperature: 0.7
+  max_tokens: 512
